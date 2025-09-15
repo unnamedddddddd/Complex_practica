@@ -12,35 +12,52 @@
             <TextBox materialDesign:HintAssist.Hint="Sequence"
                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                   Margin="0,0,0,16"
-                  x:Name="Sequence"
-                />
+                  Width="220"
+                  HorizontalAlignment="Left"
+                  x:Name="Sequence"/>
             <Canvas>
+                <materialDesign:Snackbar
+                    x:Name="NotificationSnackbar"
+                    MessageQueue="{materialDesign:MessageQueue}"
+                    Canvas.Top="-30"
+                    Canvas.Right="30"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Center"
+                    Margin="16"/>   
+
                 <Button
-                x:Name="Open_file"
-                Content="Open File"
-                Height="30"
-                Width="100"
-                Margin="10"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"    
-                Canvas.Left="10"
-                Canvas.Top="250"
-                Click="Open_file_Click"/>
+                    x:Name="Open_file"
+                    Content="Open File"
+                    Height="30"
+                    Width="100"
+                    Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                    Margin="10"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"    
+                    Canvas.Left="220"
+                    Canvas.Top="20"
+                    Click="Open_file_Click"/>
             </Canvas>
-
-            <Button  
-            x:Name="to_know"
-            Content="to know"
-            Height="30"
-            Margin="0 0 0 10"
-            Click="to_know_Click"
-            Style="{StaticResource MaterialDesignFlatButton}"/>
-
+            <Canvas>
+                <Button  
+                    x:Name="to_know"
+                    Content="to know"
+                    Height="30"
+                    Margin="0 0 0 10"
+                    Click="to_know_Click"
+                    Canvas.Left="230"
+                    Canvas.Top="-33"
+                    Style="{StaticResource MaterialDesignFlatDarkBgButton}"/>
+        </Canvas>
             <TextBox x:Name="path"
                  materialDesign:HintAssist.Hint="Path"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                 Margin="0 0 0 16"/>
-
+                 Margin="0 0 0 16"
+                 Width="220"
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Left"
+                     />
+            
         </StackPanel>
     </Grid>
 </Window>

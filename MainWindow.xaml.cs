@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MaterialDesignThemes.Wpf;
 
 namespace Complex_Practica
 {
@@ -21,13 +22,13 @@ namespace Complex_Practica
         public MainWindow()
         {
             InitializeComponent();
-            if (!File.Exists("W:\\source\\data.txt"))
+            if (!File.Exists("C:\\Users\\denis\\source\\data.txt"))
             {
-                File.Create("W:\\source\\data.txt").Close();
+                File.Create("C:\\Users\\denis\\source\\data.txt").Close();
             }
 
         }
-        public void CreateDataFile(string file = "W:\\source\\data.txt")
+        public void CreateDataFile(string file = "C:\\Users\\denis\\source\\data.txt")
         {
             if (!File.Exists(file))
 
@@ -65,16 +66,11 @@ namespace Complex_Practica
         }
         public void InputResFile(string DataFile)
         {
-            string IntFile = "W:\\source\\dataInput.txt";
-            if (!File.Exists(IntFile))
-            {
-                File.Create(IntFile).Close();
-                File.WriteAllText(IntFile, DataFile.ToString());
-            }
-            else
-            {
-                File.WriteAllText(IntFile, DataFile.ToString());
-            }
+            string IntFile = "C:\\Users\\denis\\source\\InputData.txt";
+            
+             File.WriteAllText(IntFile, DataFile.ToString());
+            
+            
         }
 
         public void CheckSequence(List<int> digits)
@@ -116,7 +112,7 @@ namespace Complex_Practica
 
             }
         }
-        public void Initialization(string path = "W:\\source\\data.txt")
+        public void Initialization(string path = "C:\\Users\\denis\\source\\data.txt")
         {
             CreateDataFile(path);
         }
@@ -148,7 +144,10 @@ namespace Complex_Practica
             }
             else
             {
-                MessageBox.Show("Enter path");
+                NotificationSnackbar.MessageQueue.Enqueue(
+                   "Введи путь",
+                   "ЗАКРЫТЬ",
+                   () => { /* Действие при нажатии на кнопку */ });
             }
         }
     }
