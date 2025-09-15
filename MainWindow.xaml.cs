@@ -14,9 +14,6 @@ using MaterialDesignThemes.Wpf;
 
 namespace Complex_Practica
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -50,7 +47,7 @@ namespace Complex_Practica
 
                 List<int> digits = new List<int>();
 
-                foreach (char c in data)
+                  foreach (char c in data)
                 {
                     if (char.IsDigit(c))
                     {
@@ -66,11 +63,11 @@ namespace Complex_Practica
         }
         public void InputResFile(string DataFile)
         {
-            string IntFile = "C:\\Users\\denis\\source\\InputData.txt";
-            
-             File.WriteAllText(IntFile, DataFile.ToString());
-            
-            
+
+            string sourcePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"..", "..", "..", "..",".."));
+            string filePath = System.IO.Path.Combine(sourcePath, "InputData.txt");
+            File.WriteAllText(filePath, DataFile.ToString());
+
         }
 
         public void CheckSequence(List<int> digits)
@@ -80,7 +77,7 @@ namespace Complex_Practica
 
             for (int i = 1; i < digits.Count; i++)
             {
-                if (digits[i] > digits[i - 1])
+                if (digits[i] > digits[i - 1])  
                 {
                     Down = false;
                 }
@@ -112,7 +109,7 @@ namespace Complex_Practica
 
             }
         }
-        public void Initialization(string path = "C:\\Users\\denis\\source\\data.txt")
+        public void Initialization(string path = "..\\source\\data.txt")
         {
             CreateDataFile(path);
         }
@@ -147,7 +144,7 @@ namespace Complex_Practica
                 NotificationSnackbar.MessageQueue.Enqueue(
                    "Введи путь",
                    "ЗАКРЫТЬ",
-                   () => { /* Действие при нажатии на кнопку */ });
+                   () => { /*Можно добавить действие(можете подумать что)*/});
             }
         }
     }
