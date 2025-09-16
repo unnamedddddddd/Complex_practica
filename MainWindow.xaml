@@ -6,27 +6,48 @@
         xmlns:local="clr-namespace:Complex_Practica"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        WindowState="Maximized"
+        Title="MainWindow" MinHeight="450" MinWidth="800">
+    <Grid Margin="0,0,0,3">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
         <StackPanel Margin="32">
             <Canvas>
+                
                 <CheckBox Margin="0 0 0 16"
-                      HorizontalAlignment="Right"
                       Style="{StaticResource MaterialDesignDarkCheckBox}"
                       x:Name="Sequence"
                       Canvas.Right="36"
-                      Content="Sequence"/>
+                      VerticalAlignment="Stretch"
+                      HorizontalAlignment="Stretch"
+                      Content="Sequence"
+                      Grid.Column = "1"
+                      Grid.Row="1"/>
 
                 <CheckBox Margin="0 0 0 16"
-                      HorizontalAlignment="Right"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
                       Style="{StaticResource MaterialDesignDarkCheckBox}"
                       x:Name="krasnukov"
+                      Grid.Column="3"
+                      Grid.Row="3"
                       Canvas.Right="34"
                       Canvas.Top="20"
                       Content="krasnukov"/>
 
                 <CheckBox Margin="0 0 0 16"
-                      HorizontalAlignment="Right"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
                       Style="{StaticResource MaterialDesignDarkCheckBox}"
                       x:Name="Proskuryakov"
                       Canvas.Right="17"
@@ -34,7 +55,8 @@
                       Content="Proskuryakov"/>
 
                 <CheckBox Margin="0 0 0 16"
-                      HorizontalAlignment="Right"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
                       Canvas.Right="40"
                       Canvas.Top="60"
                       Style="{StaticResource MaterialDesignDarkCheckBox}"
@@ -46,7 +68,8 @@
                       Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                       Margin="0,0,0,16"
                       Width="220"
-                      HorizontalAlignment="Left"
+                      VerticalAlignment="Stretch"
+                      HorizontalAlignment="Stretch"
                       x:Name="TextSequence"/>
 
             <Canvas>
@@ -55,8 +78,8 @@
                         MessageQueue="{materialDesign:MessageQueue}"
                         Canvas.Top="-30"
                         Canvas.Right="30"
-                        VerticalAlignment="Bottom"
-                        HorizontalAlignment="Center"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"
                         Margin="16"/>   
 
                 <Button
@@ -66,8 +89,8 @@
                     Width="100"
                     Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                     Margin="10"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"    
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"    
                     Canvas.Left="220"
                     Canvas.Top="20"
                     Click="Open_file_Click"/>
@@ -77,7 +100,9 @@
                     x:Name="to_know"
                     Content="to know"
                     Height="30"
-                    Margin="0 0 0 10"
+                    VerticalAlignment="Stretch"
+                    Margin="0 0 0 10"                       
+                    HorizontalAlignment="Stretch"
                     Click="to_know_Click"
                     Canvas.Left="230"
                     Canvas.Top="-33"
@@ -88,8 +113,8 @@
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  Margin="0 0 0 16"
                  Width="220"
-                 VerticalAlignment="Top"
-                 HorizontalAlignment="Left"
+                 VerticalAlignment="Stretch"
+                 HorizontalAlignment="Stretch"
                      />
             
         </StackPanel>
