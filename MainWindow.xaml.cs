@@ -19,103 +19,15 @@ namespace Complex_Practica
         public MainWindow()
         {
             InitializeComponent();
-            string sourcePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "..", ".."));
+            string sourcePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", ".."));
             string filePath = System.IO.Path.Combine(sourcePath, "data.txt");
-
+            
             if (!File.Exists(filePath))
             {
                 File.Create(filePath).Close();
             }
 
-        }
-        public void CreateDataFile(string file)
-        {
-            if (!File.Exists(file))
-
-            {
-                File.Create(file).Close();
-                OutputDataFile(file);
-            }
-            else
-            {
-                OutputDataFile(file);
-            }
-        }
-
-        public void OutputDataFile(string file)
-        {
-            using (FileStream fl = new FileStream(file, FileMode.Open, FileAccess.Read))
-            {
-                string data = File.ReadAllText(file).Trim();
-
-                List<int> digits = new List<int>();
-
-                  foreach (char c in data)
-                {
-                    if (char.IsDigit(c))
-                    {
-                        digits.Add(c - '0');
-                    }
-                }
-
-                TextSequence.Text = data;
-                CheckSequence(digits);
-
-            }
-
-        }
-        public void InputResFile(string DataFile)
-        {
-
-            string sourcePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"..", "..", "..", "..",".."));
-            string filePath = System.IO.Path.Combine(sourcePath, "InputData.txt");
-            File.WriteAllText(filePath, DataFile.ToString());
-
-        }
-
-        public void CheckSequence(List<int> digits)
-        {
-            bool Up = true;
-            bool Down = true;
-
-            for (int i = 1; i < digits.Count; i++)
-            {
-                if (digits[i] > digits[i - 1])  
-                {
-                    Down = false;
-                }
-                else if (digits[i] < digits[i - 1])
-                {
-                    Up = false;
-                }
-
-                if (Up && Down)
-                {
-                    TextSequence.Text = ("Постоянная");
-
-                }
-                else if (Up)
-                {
-                    TextSequence.Text = ("Возврастающая");
-                }
-                else if (Down)
-                {
-                    TextSequence.Text = ("Убывающая");
-                }
-                else
-                {
-                    TextSequence.Text = ("Никакая");
-                }
-
-                string data = TextSequence.Text;
-                InputResFile(data);
-
-            }
-        }
-        public void Initialization(string path = "..\\source\\data.txt")
-        {
-            CreateDataFile(path);
-        }
+        }  
 
         private void Open_file_Click(object sender, RoutedEventArgs e)
         {
@@ -131,7 +43,6 @@ namespace Complex_Practica
 
                 path.Text = selectedFilePath;
 
-
             }
         }
 
@@ -140,7 +51,17 @@ namespace Complex_Practica
             if (path.Text != "")
             {
                 string selectedFilePath = path.Text;
-                Initialization(selectedFilePath);
+                bool krasnukovChecked = Krasnukov.IsChecked ?? false;
+                bool kamaldinovChecked = Sequence.IsChecked ?? false;
+                bool proskuryakovChecked = Proskuryakov.IsChecked ?? false;
+                bool poryvaevChecked = Poryvaev.IsChecked ?? false;
+
+                if (kamaldinovChecked)  
+                {
+                    Kamaldinov kamal = new Kamaldinov();
+                    kamal.CreateDataFile(selectedFilePath);
+
+                }
             }
             else
             {
