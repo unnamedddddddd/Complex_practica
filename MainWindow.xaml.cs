@@ -21,7 +21,6 @@ namespace Complex_Practica
             InitializeComponent();
             string sourcePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"..","..",".."));
             string filePath = System.IO.Path.Combine(sourcePath, "data.txt");
-            MessageBox.Show(filePath);
             if (!File.Exists(filePath))
             {
                 File.Create(filePath).Close();
