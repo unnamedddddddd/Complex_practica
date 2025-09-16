@@ -19,13 +19,16 @@ namespace Complex_Practica
         public MainWindow()
         {
             InitializeComponent();
-            if (!File.Exists("C:\\Users\\denis\\source\\data.txt"))
+            string sourcePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "..", ".."));
+            string filePath = System.IO.Path.Combine(sourcePath, "data.txt");
+
+            if (!File.Exists(filePath))
             {
-                File.Create("C:\\Users\\denis\\source\\data.txt").Close();
+                File.Create(filePath).Close();
             }
 
         }
-        public void CreateDataFile(string file = "C:\\Users\\denis\\source\\data.txt")
+        public void CreateDataFile(string file)
         {
             if (!File.Exists(file))
 
@@ -55,7 +58,7 @@ namespace Complex_Practica
                     }
                 }
 
-                Sequence.Text = data;
+                TextSequence.Text = data;
                 CheckSequence(digits);
 
             }
@@ -88,23 +91,23 @@ namespace Complex_Practica
 
                 if (Up && Down)
                 {
-                    Sequence.Text = ("Постоянная");
+                    TextSequence.Text = ("Постоянная");
 
                 }
                 else if (Up)
                 {
-                    Sequence.Text = ("Возврастающая");
+                    TextSequence.Text = ("Возврастающая");
                 }
                 else if (Down)
                 {
-                    Sequence.Text = ("Убывающая");
+                    TextSequence.Text = ("Убывающая");
                 }
                 else
                 {
-                    Sequence.Text = ("Никакая");
+                    TextSequence.Text = ("Никакая");
                 }
 
-                string data = Sequence.Text;
+                string data = TextSequence.Text;
                 InputResFile(data);
 
             }

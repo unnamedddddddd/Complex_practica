@@ -9,21 +9,55 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <StackPanel Margin="32">
-            <TextBox materialDesign:HintAssist.Hint="Sequence"
-                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                  Margin="0,0,0,16"
-                  Width="220"
-                  HorizontalAlignment="Left"
-                  x:Name="Sequence"/>
             <Canvas>
-                <materialDesign:Snackbar
-                    x:Name="NotificationSnackbar"
-                    MessageQueue="{materialDesign:MessageQueue}"
-                    Canvas.Top="-30"
-                    Canvas.Right="30"
-                    VerticalAlignment="Bottom"
-                    HorizontalAlignment="Center"
-                    Margin="16"/>   
+                <CheckBox Margin="0 0 0 16"
+                      HorizontalAlignment="Right"
+                      Style="{StaticResource MaterialDesignDarkCheckBox}"
+                      x:Name="Sequence"
+                      Canvas.Right="36"
+                      Content="Sequence"/>
+
+                <CheckBox Margin="0 0 0 16"
+                      HorizontalAlignment="Right"
+                      Style="{StaticResource MaterialDesignDarkCheckBox}"
+                      x:Name="krasnukov"
+                      Canvas.Right="34"
+                      Canvas.Top="20"
+                      Content="krasnukov"/>
+
+                <CheckBox Margin="0 0 0 16"
+                      HorizontalAlignment="Right"
+                      Style="{StaticResource MaterialDesignDarkCheckBox}"
+                      x:Name="Proskuryakov"
+                      Canvas.Right="17"
+                      Canvas.Top="40"
+                      Content="Proskuryakov"/>
+
+                <CheckBox Margin="0 0 0 16"
+                      HorizontalAlignment="Right"
+                      Canvas.Right="40"
+                      Canvas.Top="60"
+                      Style="{StaticResource MaterialDesignDarkCheckBox}"
+                      x:Name="Poryvaev"
+                      Content="Poryvaev"/>
+            </Canvas>
+
+            <TextBox materialDesign:HintAssist.Hint="TextSequence"
+                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                      Margin="0,0,0,16"
+                      Width="220"
+                      HorizontalAlignment="Left"
+                      x:Name="TextSequence"/>
+
+            <Canvas>
+                    <materialDesign:Snackbar
+                        x:Name="NotificationSnackbar"
+                        MessageQueue="{materialDesign:MessageQueue}"
+                        Canvas.Top="-30"
+                        Canvas.Right="30"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center"
+                        Margin="16"/>   
 
                 <Button
                     x:Name="Open_file"
