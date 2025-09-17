@@ -7,111 +7,136 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         WindowState="Maximized" 
-        Title="MainWindow" MinHeight="1020" MinWidth="1920" >
-    <Grid Margin="10,10,0,-6" RenderTransformOrigin="0.489,0.47">
+        Title="MainWindow"
+        MinHeight="1020" 
+        MinWidth="1920">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="160*"/>
+            <ColumnDefinition Width="55*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="97*"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" MinHeight="357" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Column="2" Margin="613,1,-396,69" x:Name="CheckBoxs">
-            <CheckBox
-                    Style="{StaticResource MaterialDesignDarkCheckBox}"
-                    x:Name="Poryvaev"
-                    Content="Poryvaev"
-                    />
+        <TextBox x:Name="path"
+                 Grid.Row="0" Grid.Column="0"
+                 materialDesign:HintAssist.Hint="Path"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 Margin="0,0,10,10"
+                 Height="42"/>
 
-            <CheckBox 
-                    Style="{StaticResource MaterialDesignDarkCheckBox}"
-                    x:Name="Krasnukov"
-                    Content="krasnukov"/>
+        <materialDesign:Snackbar Grid.Column="2"
+        x:Name="NotificationSnackbar"
+        MessageQueue="{materialDesign:MessageQueue}"
+        Height="52"
+        VerticalAlignment="Center"
+        HorizontalAlignment="Left"
+        Width="530"
+        Background="{DynamicResource PrimaryHueMidBrush}"
+        Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" 
+        Grid.ColumnSpan="2">
 
-            <CheckBox 
-                    Style="{StaticResource MaterialDesignDarkCheckBox}"
-                    x:Name="Sequence"
-                    x:FieldModifier="public"
-                    Content="Sequence"
-                    Grid.Column="3"
-                    Grid.Row="3"  />
+            <materialDesign:Snackbar.ActionButtonStyle>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              Margin="8"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </materialDesign:Snackbar.ActionButtonStyle>
 
-            <CheckBox Margin="0 0 0 16"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    Style="{StaticResource MaterialDesignDarkCheckBox}"
-                    x:Name="Proskuryakov"
-                    Grid.Column="3"
-                    Grid.Row="3"
-                    Content="Proskuryakov"/>
-        </StackPanel>
+        </materialDesign:Snackbar>
 
-        <TextBox Grid.Row="2" 
-                 materialDesign:HintAssist.Hint="TextFile"
-                 Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
-                 Grid.Column="0" 
-                 Grid.ColumnSpan="2" 
-                 Margin="0,44,602,-74"
-                 x:Name="TextFile"/>
-
-        <TextBox Grid.Row="2" 
-                 materialDesign:HintAssist.Hint="TextInputFile"
-                 Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
-                 Grid.Column="1" 
-                 Margin="10,44,10,-74"
-                 x:Name="TextInputFile"/>
-
-
-        <TextBox materialDesign:HintAssist.Hint="TextSequence"
-                IsReadOnly="True"
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                Margin="10,1,123,307"
-                x:Name="TextSequence"/>
-
-
-        <materialDesign:Snackbar
-                x:Name="NotificationSnackbar"
-                MessageQueue="{materialDesign:MessageQueue}"
-                VerticalAlignment="Stretch"
-                HorizontalAlignment="Stretch"
-                Margin="125,10,-101,120" Grid.Column="2"/>
-
-        <Button Content="Save" 
-                Grid.Column="0" 
-                Grid.Row="2"  
-                Style="{StaticResource MaterialDesignFlatDarkBgButton}"
-                Margin="0,236,10,-232"
-                Click="SaveFile"
-                />
-
-        <Button
-                x:Name="Open_file"
+        <Button x:Name="Open_file"
+                Grid.Row="0"
                 Content="Open File"
                 Style="{StaticResource MaterialDesignFlatDarkBgButton}"
-                Margin="400,15,110,310"    
-                Click="Open_file_Click" RenderTransformOrigin="0.715,0.684" Grid.Column="1"/>
+                Margin="5,-1,54,11"
+                Height="42"
+                Click="Open_file_Click" Grid.Column="1"/>
 
-        <Button  
-                x:Name="to_know"
+        <Button x:Name="to_know"
+                Grid.Row="0" Grid.Column="4"
                 Content="to know"
-                Height="30"
-                VerticalAlignment="Top"
-                Margin="486,22,10,0"
+                Height="42"
+                Margin="66,0,0,10"
                 Click="to_know_Click"
                 Style="{StaticResource MaterialDesignFlatDarkBgButton}"/>
 
-        <TextBox x:Name="path"
-                    materialDesign:HintAssist.Hint="Path"
-                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                    Margin="10,0,227,304"
-                    Grid.Column="1"
-                    Grid.Row="0"
-                    VerticalAlignment="Bottom" 
-                    Height="43"/>
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"
+                    Orientation="Horizontal" Margin="0,0,0,10">
+            <CheckBox Style="{StaticResource MaterialDesignDarkCheckBox}"
+                      x:Name="Poryvaev"
+                      Content="Poryvaev"
+                      Margin="0,0,10,0"/>
+
+            <CheckBox Style="{StaticResource MaterialDesignDarkCheckBox}"
+                      x:Name="Krasnukov"
+                      Content="krasnukov"
+                      Margin="0,0,10,0"/>
+
+            <CheckBox Style="{StaticResource MaterialDesignDarkCheckBox}"
+                      x:Name="Sequence"
+                      Content="Sequence"
+                      Margin="0,0,10,0"/>
+
+            <CheckBox Style="{StaticResource MaterialDesignDarkCheckBox}"
+                      x:Name="Proskuryakov"
+                      Content="Proskuryakov"/>
+        </StackPanel>
+
+        <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"
+                 x:Name="TextSequence"
+                 materialDesign:HintAssist.Hint="TextSequence"
+                 IsReadOnly="True"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 Margin="0,0,0,10"
+                 Height="100"/>
+
+        <TextBox Grid.Row="3" Grid.Column="0"
+                 x:Name="TextFile"
+                 materialDesign:HintAssist.Hint="TextFile"
+                 Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+                 Margin="0,0,5,10"/>
+
+        <TextBox Grid.Row="3" Grid.Column="1"
+                 x:Name="TextInputFile"
+                 materialDesign:HintAssist.Hint="TextInputFile"
+                 Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+                 Margin="5,0,0,10" Grid.ColumnSpan="3"/>
+
+        <StackPanel Grid.Row="4" Grid.Column="4"
+                    Orientation="Horizontal" HorizontalAlignment="Right"
+                    Margin="0,10,0,0">
+            <Button Content="Save" 
+                    Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                    Margin="0,0,10,0"
+                    Click="SaveFile"/>
+
+        </StackPanel>
 
     </Grid>
+
 </Window>
