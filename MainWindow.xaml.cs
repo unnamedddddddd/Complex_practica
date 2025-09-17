@@ -18,9 +18,11 @@ namespace Complex_Practica
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();           
             string sourcePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"..","..",".."));
-            string filePath = System.IO.Path.Combine(sourcePath, "data.txt");
+            string directoryPath = System.IO.Path.Combine(sourcePath, "Test");
+            Directory.CreateDirectory(directoryPath);
+            string filePath = System.IO.Path.Combine(directoryPath, "data.txt");
             if (!File.Exists(filePath))
             {
                 File.Create(filePath).Close();

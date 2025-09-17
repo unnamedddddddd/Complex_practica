@@ -50,7 +50,8 @@ namespace Complex_Practica
         public void InputResFile(string DataFile)
         {
             string sourcePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", ".."));
-            string filePath = System.IO.Path.Combine(sourcePath, "InputData.txt");
+            string directoryPath = System.IO.Path.Combine(sourcePath, "Test");
+            string filePath = System.IO.Path.Combine(directoryPath, "InputData.txt");
             File.WriteAllText(filePath, DataFile.ToString());
         }
         public void CheckSequence(List<int> digits)
