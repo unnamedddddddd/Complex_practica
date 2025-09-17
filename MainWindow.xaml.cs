@@ -43,6 +43,8 @@ namespace Complex_Practica
                 string selectedFilePath = openFileDialog.FileName;
 
                 path.Text = selectedFilePath;
+                string data = File.ReadAllText(path.Text).Trim();
+                TextFile.Text = data;
 
             }
         }
@@ -57,7 +59,7 @@ namespace Complex_Practica
                 bool proskuryakovChecked = Proskuryakov.IsChecked ?? false;
                 bool poryvaevChecked = Poryvaev.IsChecked ?? false;
 
-                if (kamaldinovChecked)  
+                if (kamaldinovChecked)
                 {
                     Kamaldinov kamal = new Kamaldinov();
                     kamal.CreateDataFile(selectedFilePath);
@@ -71,6 +73,17 @@ namespace Complex_Practica
                    "ЗАКРЫТЬ",
                    () => { /*Можно добавить действие(можете подумать что)*/});
             }
+        }
+        private void SaveFile(object sender, RoutedEventArgs e)
+        {
+
+            string sourcePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", ".."));
+            string directoryPath = System.IO.Path.Combine(sourcePath, "Test");
+            string filePath = System.IO.Path.Combine(directoryPath, "data.txt");
+            File.WriteAllText(filePath,TextFile.Text.ToString());
+
+
+
         }
     }
 }
