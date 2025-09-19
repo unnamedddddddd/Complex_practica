@@ -87,7 +87,7 @@ namespace Complex_Practica
                 }
                 else if (Up)
                 {
-                    data = "Возврастающая";
+                    data = "Возрастающая";
                 }
                 else if (Down)
                 {
