@@ -44,7 +44,7 @@ namespace Complex_Practica
 
                 path.Text = selectedFilePath;
                 string data = File.ReadAllText(path.Text).Trim();
-                TextFile.Text = data;
+                TextFile.Text = data;            
 
             }
         }
@@ -85,5 +85,6 @@ namespace Complex_Practica
 
 
         }
+
     }
 }

@@ -53,6 +53,15 @@ namespace Complex_Practica
             string directoryPath = System.IO.Path.Combine(sourcePath, "Test");
             string filePath = System.IO.Path.Combine(directoryPath, "InputData.txt");
             File.WriteAllText(filePath, DataFile.ToString());
+
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window is MainWindow)
+                {
+                    ((MainWindow)window).TextInputFile.Text = DataFile;
+                }
+            }
+            
         }
         public void CheckSequence(List<int> digits)
         {

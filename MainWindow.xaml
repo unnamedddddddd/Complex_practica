@@ -14,17 +14,15 @@
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="160*"/>
-            <ColumnDefinition Width="55*"/>
-            <ColumnDefinition Width="8*"/>
-            <ColumnDefinition Width="97*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
@@ -35,57 +33,17 @@
                  Margin="0,0,10,10"
                  Height="42"/>
 
-        <materialDesign:Snackbar Grid.Column="2"
-        x:Name="NotificationSnackbar"
-        MessageQueue="{materialDesign:MessageQueue}"
-        Height="52"
-        VerticalAlignment="Center"
-        HorizontalAlignment="Left"
-        Width="530"
-        Background="{DynamicResource PrimaryHueMidBrush}"
-        Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" 
-        Grid.ColumnSpan="2">
-
-            <materialDesign:Snackbar.ActionButtonStyle>
-                <Style TargetType="Button">
-                    <Setter Property="Background" Value="Transparent"/>
-                    <Setter Property="Foreground" Value="White"/>
-                    <Setter Property="BorderBrush" Value="Transparent"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="Button">
-                                <Border Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="0">
-                                    <ContentPresenter HorizontalAlignment="Center"
-                                              VerticalAlignment="Center"
-                                              Margin="8"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </materialDesign:Snackbar.ActionButtonStyle>
-
-        </materialDesign:Snackbar>
-
         <Button x:Name="Open_file"
-                Grid.Row="0"
+                Grid.Row="0" Grid.Column="1"
                 Content="Open File"
                 Style="{StaticResource MaterialDesignFlatDarkBgButton}"
-                Margin="5,-1,54,11"
+                Margin="0,0,10,10"
                 Height="42"
-                Click="Open_file_Click" Grid.Column="1"/>
+                Width="120"
+                Click="Open_file_Click"/>
 
-        <Button x:Name="to_know"
-                Grid.Row="0" Grid.Column="4"
-                Content="to know"
-                Height="42"
-                Margin="66,0,0,10"
-                Click="to_know_Click"
-                Style="{StaticResource MaterialDesignFlatDarkBgButton}"/>
 
-        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
                     Orientation="Horizontal" Margin="0,0,0,10">
             <CheckBox Style="{StaticResource MaterialDesignDarkCheckBox}"
                       x:Name="Poryvaev"
@@ -104,39 +62,84 @@
 
             <CheckBox Style="{StaticResource MaterialDesignDarkCheckBox}"
                       x:Name="Proskuryakov"
-                      Content="Proskuryakov"/>
+                      Content="Proskuryakov"
+                      Margin="0,0,10,0"/>
+
+            <Button x:Name="to_know"
+                    Content="to know"
+                    Height="42"
+                    VerticalAlignment="Center"
+                    Click="to_know_Click"
+                    Style="{StaticResource MaterialDesignFlatDarkBgButton}"/>
         </StackPanel>
 
-        <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"
+        <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
                  x:Name="TextSequence"
                  materialDesign:HintAssist.Hint="TextSequence"
                  IsReadOnly="True"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  Margin="0,0,0,10"
-                 Height="100"/>
+                 Height="60"/>
 
-        <TextBox Grid.Row="3" Grid.Column="0"
-                 x:Name="TextFile"
-                 materialDesign:HintAssist.Hint="TextFile"
-                 Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
-                 Margin="0,0,5,10"/>
+        <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <TextBox Grid.Row="3" Grid.Column="1"
-                 x:Name="TextInputFile"
-                 materialDesign:HintAssist.Hint="TextInputFile"
-                 Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
-                 Margin="5,0,0,10" Grid.ColumnSpan="3"/>
+            <TextBox Grid.Column="0"
+                     x:Name="TextFile"
+                     materialDesign:HintAssist.Hint="TextFile"
+                     Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"/>
 
-        <StackPanel Grid.Row="4" Grid.Column="4"
-                    Orientation="Horizontal" HorizontalAlignment="Right"
-                    Margin="0,10,0,0">
-            <Button Content="Save" 
-                    Style="{StaticResource MaterialDesignFlatDarkBgButton}"
-                    Margin="0,0,10,0"
-                    Click="SaveFile"/>
+            <TextBox Grid.Column="2"
+                     x:Name="TextInputFile"
+                     IsReadOnly="True"
+                     materialDesign:HintAssist.Hint="TextInputFile"
+                     Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" />
+        </Grid>
 
-        </StackPanel>
+        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
+                Content="Save" 
+                Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                Margin="0,10,0,0"
+                Height="42"
+                Click="SaveFile"/>
+
+        <materialDesign:Snackbar 
+        Grid.Row="0"
+        x:Name="NotificationSnackbar"
+        MessageQueue="{materialDesign:MessageQueue}"
+        Height="73"
+        VerticalAlignment="Top"
+        HorizontalAlignment="Left"
+        Width="506"
+        Background="{DynamicResource PrimaryHueMidBrush}"
+        Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
+        Margin="744,0,0,0" Grid.RowSpan="2">
+
+            <materialDesign:Snackbar.ActionButtonStyle>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Margin="8"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </materialDesign:Snackbar.ActionButtonStyle>
+        </materialDesign:Snackbar>
 
     </Grid>
-
 </Window>
