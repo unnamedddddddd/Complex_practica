@@ -29,7 +29,6 @@ namespace Complex_Practica
             }
 
         }  
-
         private void Open_file_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -48,17 +47,24 @@ namespace Complex_Practica
 
             }
         }
-
         private void to_know_Click(object sender, RoutedEventArgs e)
         {
-            if (path.Text != "")
-            {
-                string selectedFilePath = path.Text;
-                bool krasnukovChecked = Krasnukov.IsChecked ?? false;
-                bool kamaldinovChecked = Sequence.IsChecked ?? false;
-                bool proskuryakovChecked = Proskuryakov.IsChecked ?? false;
-                bool poryvaevChecked = Poryvaev.IsChecked ?? false;
+            string selectedFilePath = path.Text;
+            bool krasnukovChecked = Krasnukov.IsChecked ?? false;
+            bool kamaldinovChecked = Sequence.IsChecked ?? false;
+            bool proskuryakovChecked = Proskuryakov.IsChecked ?? false;
+            bool poryvaevChecked = Poryvaev.IsChecked ?? false;
 
+            StringBuilder selectedItems = new StringBuilder();
+            foreach (var child in PanelBox.Children)
+            {
+                if (child is CheckBox checkBox && checkBox.IsChecked == true)
+                {
+                    selectedItems.AppendLine($"{checkBox.Content} выбран");
+                }
+            }
+            if (path.Text != "" && selectedItems.Length > 0)
+            {
                 if (kamaldinovChecked)
                 {
                     Kamaldinov kamal = new Kamaldinov();
@@ -66,13 +72,21 @@ namespace Complex_Practica
 
                 }
             }
-            else
+            else if(path.Text == "")
             {
                 NotificationSnackbar.MessageQueue.Enqueue(
-                   "Введи путь",
+                   "Введите путь",
                    "ЗАКРЫТЬ",
                    () => { /*Можно добавить действие(можете подумать что)*/});
             }
+            else
+            {
+                NotificationSnackbar.MessageQueue.Enqueue(
+                   "Выберите действие",
+                   "ЗАКРЫТЬ",
+                   () => { /*Можно добавить действие(можете подумать что)*/});
+            }
+           
         }
         private void SaveFile(object sender, RoutedEventArgs e)
         {

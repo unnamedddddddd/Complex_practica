@@ -95,7 +95,7 @@ namespace Complex_Practica
                 }
                 else
                 {
-                    data = "Никакая";
+                    data = "Неупорядоченная";
                 }
 
                 foreach (Window window in Application.Current.Windows)

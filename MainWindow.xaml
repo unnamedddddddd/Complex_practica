@@ -44,7 +44,8 @@
 
 
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
-                    Orientation="Horizontal" Margin="0,0,0,10">
+                    Orientation="Horizontal" Margin="0,0,0,10"
+                    x:Name="PanelBox">
             <CheckBox Style="{StaticResource MaterialDesignDarkCheckBox}"
                       x:Name="Poryvaev"
                       Content="Poryvaev"
