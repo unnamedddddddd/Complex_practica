@@ -16,7 +16,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" MinHeight="63.6"/>
             <RowDefinition Height="Auto" MinHeight="52"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -29,19 +28,17 @@
 
         <TextBox x:Name="path"
                  Grid.Row="0" Grid.Column="0"
-                 materialDesign:HintAssist.Hint="Path"
+                 materialDesign:HintAssist.Hint="Путь"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                 Margin="175,0,10,10"/>
+                 Margin="175,0,10,10" Cursor="Hand"/>
 
         <Button x:Name="Open_file" Grid.Column="0"
-            Content="Open File"
+            Content="Открыть файл"
             HorizontalAlignment="Left"   
-            VerticalAlignment="Center"            
-            Margin="10,0,0,0"
+            VerticalAlignment="Center"
                 FontSize="20"
             Style="{StaticResource MaterialDesignFlatDarkBgButton}"
-            Click="Open_file_Click" Width="150" Height="43"/>
-
+            Click="Open_file_Click" Width="170" Height="43"/>
 
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                     Orientation="Horizontal" Margin="0,0,0,10"
@@ -67,23 +64,16 @@
                       Margin="0,0,10,0"/>
 
             <Button x:Name="to_know"
-                    Content="to know"
+                    Content="Определить"
                     Height="42"
-                    Width="120"
+                    Width="148"
                     FontSize="20"
                     VerticalAlignment="Center"
                     Click="to_know_Click"
                     Style="{StaticResource MaterialDesignFlatDarkBgButton}"/>
         </StackPanel>
 
-        <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                 x:Name="TextSequence"
-                 materialDesign:HintAssist.Hint="TextSequence"
-                 IsReadOnly="True"
-                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                 Margin="0,0,0,10"/>
-
-        <Grid Grid.Row="2" Grid.Column="0" Margin="0,63,0,117" Grid.RowSpan="3">
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="5"/>
@@ -92,18 +82,18 @@
 
             <TextBox Grid.Column="0"
                      x:Name="TextFile"
-                     materialDesign:HintAssist.Hint="TextFile"
-                     Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" Margin="0,0,10,-50"/>
+                     materialDesign:HintAssist.Hint="Исходный текст"
+                     Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"/>
 
             <TextBox Grid.Column="2"
                      x:Name="TextInputFile"
                      IsReadOnly="True"
-                     materialDesign:HintAssist.Hint="TextInputFile"
-                     Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" Margin="10,0,0,-50" />
+                     materialDesign:HintAssist.Hint="Результат"
+                     Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" Margin="10,0,0,0" />
         </Grid>
 
-        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4"
-                Content="Save" 
+        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"
+                Content="Сохранить" 
                 Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                 Margin="0,0,0,10"
                 Height="42"

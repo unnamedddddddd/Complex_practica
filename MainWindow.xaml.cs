@@ -27,7 +27,6 @@ namespace Complex_Practica
             {
                 File.Create(filePath).Close();
             }
-
         }  
         private void Open_file_Click(object sender, RoutedEventArgs e)
         {
@@ -40,11 +39,9 @@ namespace Complex_Practica
             if (openFileDialog.ShowDialog() == true)
             {
                 string selectedFilePath = openFileDialog.FileName;
-
                 path.Text = selectedFilePath;
                 string data = File.ReadAllText(path.Text).Trim();
                 TextFile.Text = data;            
-
             }
         }
         private void to_know_Click(object sender, RoutedEventArgs e)
@@ -55,6 +52,12 @@ namespace Complex_Practica
             bool proskuryakovChecked = Proskuryakov.IsChecked ?? false;
             bool poryvaevChecked = Poryvaev.IsChecked ?? false;
 
+            if (!File.Exists(selectedFilePath))
+            {
+                File.Create(selectedFilePath).Close();  
+            }
+           
+            List<int> digits = OutputDataFile(selectedFilePath);
             StringBuilder selectedItems = new StringBuilder();
             foreach (var child in PanelBox.Children)
             {
@@ -68,8 +71,8 @@ namespace Complex_Practica
                 if (kamaldinovChecked)
                 {
                     Kamaldinov kamal = new Kamaldinov();
-                    kamal.CreateDataFile(selectedFilePath);
-
+                    string data = kamal.CheckSequence(digits);
+                    InputResFile(data);
                 }
             }
             else if(path.Text == "")
@@ -86,19 +89,39 @@ namespace Complex_Practica
                    "ЗАКРЫТЬ",
                    () => { /*Можно добавить действие(можете подумать что)*/});
             }
-           
+        }
+        public List<int> OutputDataFile(string filePath)
+        {
+            string data = File.ReadAllText(filePath).Trim();
+            List<int> digits = new List<int>();
+            foreach (char c in data)
+            {
+                if (char.IsDigit(c)) {
+                    digits.Add(c - '0');
+                }
+            }
+            return digits;
+        }
+        public void InputResFile(string DataFile)
+        {
+            string sourcePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", ".."));
+            string directoryPath = System.IO.Path.Combine(sourcePath, "Test");
+            string filePath = System.IO.Path.Combine(directoryPath, "InputData.txt");
+            File.WriteAllText(filePath, DataFile.ToString());
+
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window is MainWindow) {
+                    ((MainWindow)window).TextInputFile.Text = DataFile;
+                }
+            }
         }
         private void SaveFile(object sender, RoutedEventArgs e)
         {
-
             string sourcePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", ".."));
             string directoryPath = System.IO.Path.Combine(sourcePath, "Test");
             string filePath = System.IO.Path.Combine(directoryPath, "data.txt");
             File.WriteAllText(filePath,TextFile.Text.ToString());
-
-
-
         }
-
     }
 }
