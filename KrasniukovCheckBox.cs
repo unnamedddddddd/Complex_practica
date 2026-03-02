@@ -34,15 +34,24 @@ namespace Complex_Practica
 
             for (int i = 0; i < digits.Count; i++)
             {
-                if (digits[i] == maxDigit)
+
+                if (maxDigit == minDigit && digits[i] == maxDigit && digits[i] == minDigit)
                 {
-                    cifri += ($"Максимальное число: {maxDigit}, на позиции {i + 1}\n");
+                    cifri += ($"Максимальное и минимальное число: {maxDigit}, на позиции {i + 1}\n");
+                }
+                else
+                {
+                    if (digits[i] == maxDigit)
+                    {
+                        cifri += ($"Максимальное число: {maxDigit}, на позиции {i + 1}\n");
+                    }
+
+                    if (digits[i] == minDigit)
+                    {
+                        cifri += ($"Минимальное число: {minDigit}, на позиции: {i + 1}\n");
+                    }
                 }
 
-                if (digits[i] == minDigit)
-                {
-                    cifri += ($"Минимальное число: {minDigit}, на позиции: {i + 1}\n");
-                }
             }
             return cifri;
 

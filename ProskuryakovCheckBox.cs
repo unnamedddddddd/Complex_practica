@@ -13,28 +13,18 @@ namespace Complex_Practica
         {
             if (digits == null || digits.Count == 0)
             {
-                return "Ошибка: список цифр пуст";
+                return "Ошибка: список цифр пуст\n";
             }
-
-            bool hasEven = false; 
-            bool hasOdd = false;  
 
             foreach (int digit in digits)
             {
                 if (digit % 2 == 0)
-                    hasEven = true;
-                else
-                    hasOdd = true;
-
-                if (hasEven && hasOdd)
-                    break;
+                {
+                    return "Произведение цифр: четное\n";
+                }
             }
 
-            if (hasEven && !hasOdd)
-                return "Все цифры четные";
-            if (!hasEven && hasOdd)
-                return "Все цифры нечетные";
-            return "Четность: " + "Цифры разной четности\n";
+            return "Произведение цифр: нечетное\n";
         }
     }
 }

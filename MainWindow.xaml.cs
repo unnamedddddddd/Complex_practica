@@ -210,7 +210,7 @@ namespace Complex_Practica
                     catch (Exception ex)
                     {
                         NotificationSnackbar.MessageQueue.Enqueue(
-                           $"Ошибка в функции Камальдинова: {ex.Message}",
+                           $"Ошибка в функции: {ex.Message}",
                            "ОК",
                            () => { });
                     }
@@ -228,7 +228,7 @@ namespace Complex_Practica
                     catch (Exception ex)
                     {
                         NotificationSnackbar.MessageQueue.Enqueue(
-                           $"Ошибка в функции Краснюкова: {ex.Message}",
+                           $"Ошибка в функции: {ex.Message}",
                            "ОК",
                            () => { });
                     }
@@ -247,7 +247,7 @@ namespace Complex_Practica
                     catch (Exception ex)
                     {
                         NotificationSnackbar.MessageQueue.Enqueue(
-                           $"Ошибка в функции Проскурякова: {ex.Message}",
+                           $"Ошибка в функции: {ex.Message}",
                            "ОК",
                            () => { });
                     }
@@ -255,18 +255,40 @@ namespace Complex_Practica
 
                 if (poryvaevChecked)
                 {
-                    NotificationSnackbar.MessageQueue.Enqueue(
-                       "Функция Порываева еще не реализована",
-                       "ОК",
-                       () => { });
+                    try
+                    {
+                        PoryvaevCheckBox prosk = new PoryvaevCheckBox();
+                        string data = prosk.CheckDigitParity(digits);
+                        SaveToTestFolder(testDirectoryPath, "Порываев", TextFile.Text, data);
+                        InputResFile(data, "Порываев");
+
+                    }
+                    catch (Exception ex)
+                    {
+                        NotificationSnackbar.MessageQueue.Enqueue(
+                           $"Ошибка в функции: {ex.Message}",
+                           "ОК",
+                           () => { });
+                    }
                 }
 
                 if (chernyakovChecked)
                 {
-                    NotificationSnackbar.MessageQueue.Enqueue(
-                       "Функция Чернякова еще не реализована",
-                       "ОК",
-                       () => { });
+                    try
+                    {
+                        ChernyakovCheckBox prosk = new ChernyakovCheckBox();
+                        string data = prosk.CheckPalindrome(digits);
+                        SaveToTestFolder(testDirectoryPath, "Черняков", TextFile.Text, data);
+                        InputResFile(data, "Черняков");
+
+                    }
+                    catch (Exception ex)
+                    {
+                        NotificationSnackbar.MessageQueue.Enqueue(
+                           $"Ошибка в функции: {ex.Message}",
+                           "ОК",
+                           () => { });
+                    }
                 }
 
             }
