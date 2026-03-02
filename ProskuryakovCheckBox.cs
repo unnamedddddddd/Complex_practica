@@ -9,12 +9,32 @@ namespace Complex_Practica
 {
     class ProskuryakovCheckBox
     {
-        public static void HandleProskuryakov(bool isChecked, string filename = "output.txt")
+        public string CheckParity(List<int> digits)
         {
-            using (StreamWriter file = File.AppendText(filename))
+            if (digits == null || digits.Count == 0)
             {
-                file.WriteLine($"Proskuryakov: {(isChecked ? "checked" : "unchecked")}");
+                return "Ошибка: список цифр пуст";
             }
+
+            bool hasEven = false; 
+            bool hasOdd = false;  
+
+            foreach (int digit in digits)
+            {
+                if (digit % 2 == 0)
+                    hasEven = true;
+                else
+                    hasOdd = true;
+
+                if (hasEven && hasOdd)
+                    break;
+            }
+
+            if (hasEven && !hasOdd)
+                return "Все цифры четные";
+            if (!hasEven && hasOdd)
+                return "Все цифры нечетные";
+            return "Четность: " + "Цифры разной четности\n";
         }
     }
 }

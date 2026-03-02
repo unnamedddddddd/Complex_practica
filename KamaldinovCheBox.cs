@@ -30,22 +30,22 @@ namespace Complex_Practica
             }
             if (Up && Down)
             {
-                data = "Постоянная";
+                data = "Постоянная\n";
 
             }
             else if (Up)
             {
-                data = "Возрастающая";
+                data = "Возрастающая\n";
             }
             else if (Down)
             {
-                data = "Убывающая";
+                data = "Убывающая\n";
             }
             else
             {
-                data = "Неупорядоченная";
+                data = "Неупорядоченная\n";
             }
-            return data;
+            return "Последовательность: " + data;
         }
     }
 }

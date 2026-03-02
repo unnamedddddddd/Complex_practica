@@ -9,12 +9,43 @@ namespace Complex_Practica
 {
     class KrasniukovCheckBox
     {
-        public static void HandleKrasnukov(bool isChecked, string filename = "output.txt")
+        public string CheckMaxMin(List<int> digits)
         {
-            using (StreamWriter file = File.AppendText(filename))
+            string cifri = "";
+            int maxDigit = -1;
+            int minDigit = 10;
+            int maxPosition = -1;
+            int minPosition = -1;
+
+            for (int i = 0; i < digits.Count; i++)
             {
-                file.WriteLine($"Krasnukov: {(isChecked ? "checked" : "unchecked")}");
+
+                if (digits[i] > maxDigit)
+                {
+                    maxDigit = digits[i];
+                }
+
+                if (digits[i] < minDigit)
+                {
+                    minDigit = digits[i];
+                }
+
             }
+
+            for (int i = 0; i < digits.Count; i++)
+            {
+                if (digits[i] == maxDigit)
+                {
+                    cifri += ($"Максимальное число: {maxDigit}, на позиции {i + 1}\n");
+                }
+
+                if (digits[i] == minDigit)
+                {
+                    cifri += ($"Минимальное число: {minDigit}, на позиции: {i + 1}\n");
+                }
+            }
+            return cifri;
+
         }
     }
 }

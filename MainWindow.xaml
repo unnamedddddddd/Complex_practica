@@ -44,24 +44,34 @@
                     Orientation="Horizontal" Margin="0,0,0,10"
                     x:Name="PanelBox">
             <CheckBox Style="{StaticResource MaterialDesignDarkCheckBox}"
-                      x:Name="Poryvaev"
-                      Content="Poryvaev"
-                      Margin="0,0,10,0"/>
+                  x:Name="Kamaldinov"
+                  Content="Определить последовательность цифр"
+                  ToolTip="Определить последовательность цифр"
+                  Margin="0,0,10,0"/>
 
             <CheckBox Style="{StaticResource MaterialDesignDarkCheckBox}"
-                      x:Name="Krasnukov"
-                      Content="krasnukov"
-                      Margin="0,0,10,0"/>
+                  x:Name="Krasnukov"
+                  Content="Номера минимальных и максимальных цифр"
+                  ToolTip="Номера минимальных и максимальных цифр"
+                  Margin="0,0,10,0"/>
 
             <CheckBox Style="{StaticResource MaterialDesignDarkCheckBox}"
-                      x:Name="Sequence"
-                      Content="Sequence"
-                      Margin="0,0,10,0"/>
+                  x:Name="Proskuryakov"
+                  Content="Является ли произведение цифр четным"
+                  ToolTip="Является ли произведение цифр четным"
+                  Margin="0,0,10,0"/>
 
             <CheckBox Style="{StaticResource MaterialDesignDarkCheckBox}"
-                      x:Name="Proskuryakov"
-                      Content="Proskuryakov"
-                      Margin="0,0,10,0"/>
+                  x:Name="Chernyakov"
+                  Content="Является ли число палиндромом"
+                  ToolTip="Является ли число палиндромом"
+                  Margin="0,0,10,0"/>
+
+            <CheckBox Style="{StaticResource MaterialDesignDarkCheckBox}"
+                  x:Name="Poryvaev"
+                  Content="Определить четность или нечетность цифр"
+                  ToolTip="Определить четность или нечетность цифр"
+                  Margin="0,0,10,0"/>
 
             <Button x:Name="to_know"
                     Content="Определить"
@@ -89,7 +99,7 @@
                      x:Name="TextInputFile"
                      IsReadOnly="True"
                      materialDesign:HintAssist.Hint="Результат"
-                     Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" Margin="10,0,0,0" />
+                     Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" Margin="10,0,0,0" TextChanged="TextInputFile_TextChanged" />
         </Grid>
 
         <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"
@@ -101,16 +111,16 @@
                 Click="SaveFile"/>
 
         <materialDesign:Snackbar 
-        Grid.Row="0"
-        x:Name="NotificationSnackbar"
-        MessageQueue="{materialDesign:MessageQueue}"
-        Height="73"
-        VerticalAlignment="Top"
-        HorizontalAlignment="Left"
-        Width="506"
-        Background="{DynamicResource PrimaryHueMidBrush}"
-        Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
-        Margin="744,0,0,0" Grid.RowSpan="2">
+            x:Name="NotificationSnackbar"
+            MessageQueue="{materialDesign:MessageQueue}"
+            Height="73"
+            Width="506"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Background="{DynamicResource PrimaryHueMidBrush}"
+            Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
+            Grid.RowSpan="4"
+            Panel.ZIndex="999">
 
             <materialDesign:Snackbar.ActionButtonStyle>
                 <Style TargetType="Button">
@@ -121,11 +131,11 @@
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
                                 <Border Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="0">
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="0">
                                     <ContentPresenter HorizontalAlignment="Center"
-                                      VerticalAlignment="Center"
-                                      Margin="8"/>
+                                              VerticalAlignment="Center"
+                                              Margin="8"/>
                                 </Border>
                             </ControlTemplate>
                         </Setter.Value>
