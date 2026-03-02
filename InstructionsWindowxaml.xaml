@@ -1,0 +1,246 @@
+﻿<Window x:Class="Complex_Practica.InstructionsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Инструкция по применению"
+        Height="750"
+        Width="950"
+        WindowStartupLocation="CenterOwner"
+        WindowStyle="ToolWindow"
+        ResizeMode="NoResize"
+        FontSize="16">
+
+    <Window.Resources>
+        <Style TargetType="TextBlock" x:Key="TitleStyle">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidBrush}"/>
+            <Setter Property="Margin" Value="0,0,0,20"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="SectionStyle">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidBrush}"/>
+            <Setter Property="Margin" Value="0,15,0,10"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="TextStyle">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="0,5"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="HighlightStyle">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidBrush}"/>
+            <Setter Property="Margin" Value="0,5"/>
+        </Style>
+    </Window.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" 
+                       Text="🔍 ИНСТРУКЦИЯ ПО ПРИМЕНЕНИЮ" 
+                       Style="{StaticResource TitleStyle}"
+                       TextAlignment="Center"/>
+
+            <TextBlock Grid.Row="1" 
+                       Text="📁 1. Открытие файла" 
+                       Style="{StaticResource SectionStyle}"/>
+
+            <StackPanel Grid.Row="2" Margin="20,0,0,10">
+                <TextBlock Text="• Нажмите кнопку 'Открыть файл'" Style="{StaticResource TextStyle}"/>
+                <TextBlock Text="• Выберите текстовый файл с натуральным числом (только цифры)" Style="{StaticResource TextStyle}"/>
+                <TextBlock Text="• Максимальная длина числа - 3 цифры" Style="{StaticResource TextStyle}"/>
+                <TextBlock Text="• Файл должен быть не больше 1 МБ" Style="{StaticResource TextStyle}"/>
+                <TextBlock Text="• После открытия число появится в левом окне 'Исходный текст'" Style="{StaticResource TextStyle}"/>
+            </StackPanel>
+
+            <TextBlock Grid.Row="3" 
+                       Text="✅ 2. Выбор функций" 
+                       Style="{StaticResource SectionStyle}"/>
+
+            <Grid Grid.Row="4" Margin="20,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="🔹 Камальдинов:" FontWeight="Bold" Margin="0,5"/>
+                    <TextBlock Text="   Определяет последовательность" Margin="20,0,0,2"/>
+                    <TextBlock Text="   цифр (возрастающая/убывающая)" Margin="20,0,0,5"/>
+
+                    <TextBlock Text="🔹 Краснюков:" FontWeight="Bold" Margin="0,5"/>
+                    <TextBlock Text="   Находит номера минимальной" Margin="20,0,0,2"/>
+                    <TextBlock Text="   и максимальной цифры" Margin="20,0,0,5"/>
+
+                    <TextBlock Text="🔹 Проскуряков:" FontWeight="Bold" Margin="0,5"/>
+                    <TextBlock Text="   Проверяет, является ли" Margin="20,0,0,2"/>
+                    <TextBlock Text="   произведение цифр четным" Margin="20,0,0,5"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1">
+                    <TextBlock Text="🔹 Черняков:" FontWeight="Bold" Margin="0,5"/>
+                    <TextBlock Text="   Проверяет, является ли" Margin="20,0,0,2"/>
+                    <TextBlock Text="   число палиндромом" Margin="20,0,0,5"/>
+
+                    <TextBlock Text="🔹 Порываев:" FontWeight="Bold" Margin="0,5"/>
+                    <TextBlock Text="   Определяет, все цифры" Margin="20,0,0,2"/>
+                    <TextBlock Text="   четные или нечетные" Margin="20,0,0,5"/>
+                </StackPanel>
+            </Grid>
+
+            <TextBlock Grid.Row="5" 
+                       Text="   Можно выбрать несколько функций одновременно" 
+                       FontStyle="Italic"
+                       Margin="40,0,0,10"
+                       Foreground="Gray"/>
+
+            <TextBlock Grid.Row="6" 
+                       Text="⚡ 3. Выполнение" 
+                       Style="{StaticResource SectionStyle}"/>
+
+            <StackPanel Grid.Row="7" Margin="20,0,0,10">
+                <TextBlock Text="• Нажмите кнопку 'Определить' для анализа" Style="{StaticResource TextStyle}"/>
+                <TextBlock Text="• Результаты выбранных функций появятся в правом окне 'Результат'" Style="{StaticResource TextStyle}"/>
+                <TextBlock Text="• Каждый результат отделяется заголовком с именем функции" Style="{StaticResource TextStyle}"/>
+            </StackPanel>
+
+            <TextBlock Grid.Row="8" 
+                       Text="💾 4. Сохранение результатов" 
+                       Style="{StaticResource SectionStyle}"/>
+
+            <StackPanel Grid.Row="9" Margin="20,0,0,20">
+                <TextBlock Text="📂 Структура папки Test:" 
+                           Style="{StaticResource HighlightStyle}" 
+                           Margin="0,10,0,5"/>
+
+                <Border BorderBrush="{DynamicResource PrimaryHueMidBrush}" 
+                        BorderThickness="1" 
+                        CornerRadius="5" 
+                        Padding="15" 
+                        Margin="0,0,0,15"
+                        Background="#F5F5F5">
+                    <StackPanel>
+                        <TextBlock Text="Test/" FontFamily="Consolas" Margin="0,2"/>
+                        <TextBlock Text="├── data.txt (общие входные данные)" FontFamily="Consolas" Margin="20,2"/>
+                        <TextBlock Text="├── InputData.txt (общие результаты всех функций)" FontFamily="Consolas" Margin="20,2"/>
+                        <TextBlock Text="├── Камальдинов/" FontFamily="Consolas" Margin="20,2"/>
+                        <TextBlock Text="│   ├── data.txt (входные данные)" FontFamily="Consolas" Margin="40,2"/>
+                        <TextBlock Text="│   └── InputData.txt (результат функции)" FontFamily="Consolas" Margin="40,2"/>
+                        <TextBlock Text="├── Краснюков/" FontFamily="Consolas" Margin="20,2"/>
+                        <TextBlock Text="│   ├── data.txt" FontFamily="Consolas" Margin="40,2"/>
+                        <TextBlock Text="│   └── InputData.txt" FontFamily="Consolas" Margin="40,2"/>
+                        <TextBlock Text="├── Проскуряков/" FontFamily="Consolas" Margin="20,2"/>
+                        <TextBlock Text="│   ├── data.txt" FontFamily="Consolas" Margin="40,2"/>
+                        <TextBlock Text="│   └── InputData.txt" FontFamily="Consolas" Margin="40,2"/>
+                        <TextBlock Text="├── Черняков/" FontFamily="Consolas" Margin="20,2"/>
+                        <TextBlock Text="│   ├── data.txt" FontFamily="Consolas" Margin="40,2"/>
+                        <TextBlock Text="│   └── InputData.txt" FontFamily="Consolas" Margin="40,2"/>
+                        <TextBlock Text="└── Порываев/" FontFamily="Consolas" Margin="20,2"/>
+                        <TextBlock Text="    ├── data.txt" FontFamily="Consolas" Margin="40,2"/>
+                        <TextBlock Text="    └── InputData.txt" FontFamily="Consolas" Margin="40,2"/>
+                    </StackPanel>
+                </Border>
+
+                <TextBlock Text="📌 Что и куда сохраняется:" 
+                           Style="{StaticResource HighlightStyle}" 
+                           Margin="0,10,0,5"/>
+
+                <BulletDecorator Margin="20,5">
+                    <BulletDecorator.Bullet>
+                        <TextBlock Text="•" Margin="0,0,5,0"/>
+                    </BulletDecorator.Bullet>
+                    <TextBlock TextWrapping="Wrap">
+                        <Run Text="При нажатии " FontWeight="Normal"/>
+                        <Run Text="'Определить'" FontWeight="Bold" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+                        <Run Text=":"/>
+                    </TextBlock>
+                </BulletDecorator>
+
+                <StackPanel Margin="40,0,0,10">
+                    <TextBlock Text="  - Входные данные сохраняются в Test/data.txt" Margin="0,2"/>
+                    <TextBlock Text="  - Результаты сохраняются в Test/InputData.txt" Margin="0,2"/>
+                    <TextBlock Text="  - В папку каждого студента сохраняются:" Margin="0,2"/>
+                    <TextBlock Text="    * data.txt - входные данные для его функции" Margin="40,2"/>
+                    <TextBlock Text="    * InputData.txt - результат его функции" Margin="40,2"/>
+                </StackPanel>
+
+                <BulletDecorator Margin="20,5">
+                    <BulletDecorator.Bullet>
+                        <TextBlock Text="•" Margin="0,0,5,0"/>
+                    </BulletDecorator.Bullet>
+                    <TextBlock TextWrapping="Wrap">
+                        <Run Text="При нажатии " FontWeight="Normal"/>
+                        <Run Text="'Сохранить'" FontWeight="Bold" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+                        <Run Text=": сохраняет текущие входные данные в Test/data.txt"/>
+                    </TextBlock>
+                </BulletDecorator>
+
+                <TextBlock Text="📋 Примечания:" 
+                           Style="{StaticResource HighlightStyle}" 
+                           Margin="0,15,0,5"/>
+
+                <BulletDecorator Margin="20,5">
+                    <BulletDecorator.Bullet>
+                        <TextBlock Text="•" Margin="0,0,5,0"/>
+                    </BulletDecorator.Bullet>
+                    <TextBlock Text="Все папки и файлы создаются автоматически при запуске программы"/>
+                </BulletDecorator>
+
+                <BulletDecorator Margin="20,5">
+                    <BulletDecorator.Bullet>
+                        <TextBlock Text="•" Margin="0,0,5,0"/>
+                    </BulletDecorator.Bullet>
+                    <TextBlock Text="При повторном анализе файлы перезаписываются"/>
+                </BulletDecorator>
+
+                <BulletDecorator Margin="20,5">
+                    <BulletDecorator.Bullet>
+                        <TextBlock Text="•" Margin="0,0,5,0"/>
+                    </BulletDecorator.Bullet>
+                    <TextBlock Text="Можно выбрать несколько функций - результаты сохранятся для каждой"/>
+                </BulletDecorator>
+
+                <BulletDecorator Margin="20,5">
+                    <BulletDecorator.Bullet>
+                        <TextBlock Text="•" Margin="0,0,5,0"/>
+                    </BulletDecorator.Bullet>
+                    <TextBlock Text="Путь к файлам: .../Complex_Practica/Test/"/>
+                </BulletDecorator>
+            </StackPanel>
+
+            <Grid Grid.Row="10" />
+
+            <Button Grid.Row="11"
+                    Content="Понятно"
+                    Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                    Width="200"
+                    Height="50"
+                    HorizontalAlignment="Center"
+                    Margin="0,20,0,20"
+                    FontSize="18"
+                    Click="CloseButton_Click"/>
+        </Grid>
+    </ScrollViewer>
+</Window>

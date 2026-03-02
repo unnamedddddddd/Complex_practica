@@ -40,7 +40,20 @@
             Style="{StaticResource MaterialDesignFlatDarkBgButton}"
             Click="Open_file_Click" Width="170" Height="43"/>
 
-        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+        <Button Grid.Row="0" Grid.Column="2"
+                x:Name="ShowInstructionsButton"
+                Content="?"
+                Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                Width="42"
+                Height="42"
+                Margin="0,0,10,10"
+                Click="ShowInstructions_Click"
+                FontSize="24"
+                FontWeight="Bold"
+                ToolTip="Инструкция по применению"
+                VerticalAlignment="Center"/>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
                     Orientation="Horizontal" Margin="0,0,0,10"
                     x:Name="PanelBox">
             <CheckBox Style="{StaticResource MaterialDesignDarkCheckBox}"
@@ -83,7 +96,7 @@
                     Style="{StaticResource MaterialDesignFlatDarkBgButton}"/>
         </StackPanel>
 
-        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,10">
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0,0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="5"/>
@@ -102,12 +115,13 @@
                      Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" Margin="10,0,0,0" TextChanged="TextInputFile_TextChanged" />
         </Grid>
 
-        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"
+        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
                 Content="Сохранить" 
                 Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                 Margin="0,0,0,10"
                 Height="42"
                 Width="1000"
+                HorizontalAlignment="Center"
                 Click="SaveFile"/>
 
         <materialDesign:Snackbar 

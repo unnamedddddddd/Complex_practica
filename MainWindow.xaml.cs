@@ -29,7 +29,7 @@ namespace Complex_Practica
                 File.Create(filePath).Close();
             }
 
-            CreateTestFolders(testDirectoryPath);      
+            CreateTestFolders(testDirectoryPath);
         }
 
         private void CreateTestFolders(string testDirectoryPath)
@@ -62,7 +62,7 @@ namespace Complex_Practica
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 openFileDialog.Title = "Выберите файл";
                 openFileDialog.Filter = "Все файлы (*.*)|*.*|Текстовые файлы (*.txt)|*.txt|Документы (*.docx;*.pdf)|*.docx;*.pdf";
-                openFileDialog.FilterIndex = 2; 
+                openFileDialog.FilterIndex = 2;
                 openFileDialog.RestoreDirectory = true;
 
                 if (openFileDialog.ShowDialog() == true)
@@ -71,7 +71,7 @@ namespace Complex_Practica
                     path.Text = selectedFilePath;
 
                     FileInfo fileInfo = new FileInfo(selectedFilePath);
-                    if (fileInfo.Length > 1048576) 
+                    if (fileInfo.Length > 1048576)
                     {
                         NotificationSnackbar.MessageQueue.Enqueue(
                            "Файл слишком большой (макс. 1 МБ)",
@@ -86,15 +86,6 @@ namespace Complex_Practica
                     {
                         NotificationSnackbar.MessageQueue.Enqueue(
                            "Файл должен содержать только цифры",
-                           "ОК",
-                           () => { });
-                        return;
-                    }
-
-                    if (data.Length > 3)
-                    {
-                        NotificationSnackbar.MessageQueue.Enqueue(
-                           "Число слишком длинное (макс. 100 цифр)",
                            "ОК",
                            () => { });
                         return;
@@ -170,8 +161,31 @@ namespace Complex_Practica
                     return;
                 }
 
+                if (digits.Count > 3)
+                {
+                    NotificationSnackbar.MessageQueue.Enqueue(
+                       "Число должно содержать не более 3 цифр",
+                       "ОК",
+                       () => { });
+                    return;
+                }
+
+                int number = 0;
+                foreach (int digit in digits)
+                {
+                    number = number * 10 + digit;
+                }
+
+                if (number < 1 || number > 100)
+                {
+                    NotificationSnackbar.MessageQueue.Enqueue(
+                       "Число должно быть в диапазоне от 1 до 100",
+                       "ОК",
+                       () => { });
+                    return;
+                }
+
                 StringBuilder selectedItems = new StringBuilder();
-                int processedCount = 0;
 
                 foreach (var child in PanelBox.Children)
                 {
@@ -192,7 +206,6 @@ namespace Complex_Practica
                         string data = kamal.CheckSequence(digits);
                         SaveToTestFolder(testDirectoryPath, "Камальдинов", TextFile.Text, data);
                         InputResFile(data, "Камальдинов");
-                        processedCount++;
                     }
                     catch (Exception ex)
                     {
@@ -207,11 +220,10 @@ namespace Complex_Practica
                 {
                     try
                     {
-                        Krasnukov kras = new Krasnukov();
+                        KrasniukovCheckBox kras = new KrasniukovCheckBox();
                         string data = kras.CheckMaxMin(digits);
                         SaveToTestFolder(testDirectoryPath, "Краснюков", TextFile.Text, data);
                         InputResFile(data, "Краснюков");
-                        processedCount++;
                     }
                     catch (Exception ex)
                     {
@@ -230,8 +242,7 @@ namespace Complex_Practica
                         string data = prosk.CheckParity(digits);
                         SaveToTestFolder(testDirectoryPath, "Проскуряков", TextFile.Text, data);
                         InputResFile(data, "Проскуряков");
-                        processedCount++;
-                        
+
                     }
                     catch (Exception ex)
                     {
@@ -381,5 +392,18 @@ namespace Complex_Practica
                 TextInputFile.ScrollToEnd();
             }
         }
+
+        private void ShowInstructions_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+
+            InstructionsWindow instructionsWindow = new InstructionsWindow();
+            instructionsWindow.Owner = this;
+
+            instructionsWindow.ShowDialog();
+
+            this.Show();
+        }
     }
+
 }
